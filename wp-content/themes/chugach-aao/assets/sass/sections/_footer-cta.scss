@@ -1,0 +1,23 @@
+// Footer CTA
+
+.section-footer-cta {
+    
+    .wrap {
+        background-color: $navy;
+        padding: rem-calc(35px 0 5px);
+        
+        h2,
+        h3,
+        p,
+        a[href^="tel:"] {
+            color: #fff    
+        }
+        
+        h2 {
+            margin: 0 auto;
+            span[style*="underline"] {
+                border-bottom-color: $white;   
+            }
+        }
+    }
+}

@@ -1,0 +1,148 @@
+@mixin button() {
+    background-color: transparent;
+    display: block;
+    margin: 0 auto;    
+    text-align: center;
+    transition: none;
+    text-transform: uppercase;
+    text-decoration: none!important;
+    box-shadow: 0 11px 12px 0 rgba(0,0,0,0.12); 
+	color: #FFFFFF;
+	font-family: $cubano;
+	font-size: 13px;
+	letter-spacing: 1.1px;
+	line-height: 20px;
+	text-align: center;
+    min-width: 194px;
+    
+    &:hover {
+        background-color: transparent;   
+    }
+    
+    
+    @include breakpoint(medium) {
+        display: inline-block;
+        margin: 0;
+        max-width: none;
+    }
+            
+    &.disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+    
+    svg {
+       position: absolute;
+       left: 10px;
+       top: 50%;
+       transform: translateY(-50%);
+    } 
+    
+}
+
+@mixin button-background( $background: transparent, $background-hover: transparent ) {
+    background-color: $background;
+    
+    &:hover{
+        background-color: $background-hover;
+        border-color: $background-hover;
+    }  
+}
+
+@mixin button-border( $border-color: transparent, $border-color-hover: transparent, $size: 2px ) {
+    border-color: $border-color;
+    border-width: $size;
+    &:hover{
+        border-color: $border-color-hover;
+    }  
+}
+
+@mixin button-color( $color: $white, $color-hover: $white, $color-visited: $white, $color-focus: $white, $color-active: $white ) {
+    
+    color: $color;
+    
+    &:visited {
+        color: $color-visited;
+    }
+    
+    &:focus {
+        color: $color-focus;
+    }
+    
+    &:active {
+        color: $color-active;
+    }
+
+    
+    &:hover{
+        color: $color-hover;
+    }  
+}
+
+@mixin button-padding( $top: 16px, $right: 19px, $bottom: 16px, $left: 19px ) {
+    padding: $top $right $bottom $left;
+}
+
+
+@mixin button-blue {
+    @include button-background( $blue, $sky-blue );
+    @include button-color();
+    @include button-padding();
+    @include button-border($yellow, $yellow, 3px);
+    border-radius: 23px;
+}
+
+@mixin button-white {
+    @include button-background( transparent, white );
+    @include button-color(white, $sky-blue, white, $sky-blue, $blue);
+    @include button-border(white, $sky-blue, 3px);
+    @include button-padding();
+    border-radius: 23px;
+}
+
+@mixin button-yellow {
+    @include button-background( $yellow, $white );
+    @include button-color($navy, $navy, $navy, $navy, $navy);
+    @include button-padding();
+    border-radius: 23px;
+}
+
+
+.button {
+    @include button;  
+    @include button-blue;  
+        
+    &.blue {
+        @include button-blue; 
+    }
+    
+   &.white {
+       @include button-white; 
+   } 
+   
+   &.yellow {
+       @include button-yellow; 
+       
+       @include breakpoint(medium) {
+           min-width: 250px;
+       }
+   } 
+}
+
+
+.button-group {
+    
+    margin: 0 -10px;
+ 
+    a {
+        margin: 0 auto 20px;   
+    }
+    
+    @include breakpoint(medium) {
+        a {
+            margin: 0 10px $global-margin;   
+        }
+    }
+    
+}
+

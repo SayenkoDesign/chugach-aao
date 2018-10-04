@@ -1,0 +1,106 @@
+/* CSS Document */
+
+.template-contact {
+    
+    .site-content {
+        padding: 0;   
+    }
+
+    section.default {
+        
+        background: $blue;
+        min-height: 400px; 
+        
+        @include breakpoint(large) {
+            min-height: 700px; 
+            position: relative; 
+            padding-bottom: 0;
+            
+            .column:last-child {
+                padding-left: rem-calc(map-get($grid-column-gutter, large)); 
+            }
+        }
+        
+        .wpgmza-filter-widgets {
+            display: none;   
+        }
+        
+        
+        .map-container {
+            
+            height: 400px;
+            
+            @include breakpoint(large) {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                $margin: rem-calc(map-get($grid-column-gutter, large)*1);
+                width: calc(50% - #{$margin}); 
+                height: 100%;
+            }
+
+        }
+        
+        .entry-content {
+            
+            padding: rem-calc(45 0);
+            
+            h1,
+            h2,
+            h3,
+            > * {
+                color: #fff;   
+            }
+            
+            h2:last-of-type {
+                margin-top: rem-calc(50);   
+            }
+            
+            .gform_footer {
+                
+                .button {
+                    @include button;
+                    @include button-yellow;
+                    
+                    @include breakpoint(large) {
+                        min-width: 250px;
+                    }
+                }
+                
+            }
+            
+            .gform_wrapper li.gfield.gfield_error, 
+            .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
+                background-color: transparent!important;
+                margin-bottom: 6px!important;
+                border: none!important;
+                padding-bottom: 6px;
+                padding-top: 8px;
+            }
+            
+            .gform_wrapper div.validation_error {
+                color: #ffdddd!important;
+                border: none!important;
+                margin-bottom: 0!important;
+                padding: rem-calc(10 0 0)!important;
+                text-align: left!important;
+            }
+            
+            .gform_wrapper .field_description_below .gfield_description {
+                padding-top: 4px!important;
+            }
+            
+            .gform_wrapper .validation_message {
+                color: #ffdddd!important;
+            }
+        }
+          
+    }
+    
+    
+	.section-footer-cta {
+        display: none;   
+    }
+    
+}

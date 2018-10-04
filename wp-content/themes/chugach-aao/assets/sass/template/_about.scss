@@ -1,0 +1,242 @@
+// About Page
+
+.template-about {
+    
+    .site-content {
+           @include breakpoint(large) {
+                background-image: url("data:image/svg+xml,%3Csvg height='826' width='1440' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0-38h1441v314S797.528 255.476 434.336 655.11C290.758 813.093 0 825.546 0 825.546z' fill='%23035481' fill-rule='evenodd'/%3E%3C/svg%3E");
+               background-repeat: no-repeat;
+               background-size: 100% auto;
+               background-position: left -10%;   
+           }
+           
+           @include breakpoint(xxxlarge) {
+               background-position: left -20%;   
+           }
+    }
+    
+    .section-hero {
+        .wrap {
+            text-align: center;
+            background-color: $navy;
+            
+            @include breakpoint(large) {
+                background-color: transparent;
+            }
+        }
+    }
+    
+    .section-content,
+    .section-commitment,
+    .section-team {
+        .wrap {
+            .entry-content {
+                text-align: center;  
+                @include breakpoint(large) {
+                    margin: 0 auto;
+                    max-width: 700px;      
+                } 
+            }
+            
+            h2 {
+                @include heading-lines; 
+            }
+            
+            h3 {
+                color: $header-color;   
+            }
+        }
+    }
+    
+    
+    
+    .section-commitment {
+        
+        .grid {
+            
+            margin-top: 45px;
+            
+            @include breakpoint(large) {
+                position: relative;
+                z-index: 2;
+                
+                &:before {
+                    content: '';
+                    display: block;
+                    background-image: url("data:image/svg+xml,%3Csvg height='379' width='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Crect fill='%23ececec' height='375' rx='8' width='20' x='5'/%3E%3Crect height='373' rx='8' stroke='%23d7d5d5' stroke-width='2' width='18' x='6' y='1'/%3E%3Crect fill='%23d7d5d5' height='16' rx='3' width='30' y='363'/%3E%3Crect height='14' rx='3' stroke='%23d7d5d5' stroke-width='2' width='28' x='1' y='364'/%3E%3Crect fill='%23d7d5d5' height='16' rx='3' width='30'/%3E%3Crect height='14' rx='3' stroke='%23d7d5d5' stroke-width='2' width='28' x='1' y='1'/%3E%3C/g%3E%3C/svg%3E");
+                    position: absolute;
+                    z-index: -1;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    height: 379px;
+                    width: 30px;   
+                }
+     
+                
+                padding: rem-calc(70 0 45);
+            }
+            
+            .row .column {
+                padding-left: rem-calc(5)!important;
+                padding-right: rem-calc(5)!important;
+            }
+            
+            
+            .panel {
+                background-color: #fff;
+                border: 3px solid #ECECEC;
+                border-radius: 8px;
+                padding: rem-calc(10px 0);
+                @include clearfix;
+                vertical-align: middle;
+                display: flex;  
+                
+                
+            }
+            
+            h4 {
+                color: $header-color;
+                margin: 0;   
+            }
+            
+            img {
+                margin-left: rem-calc(15);
+            }
+        }
+    }
+    
+    
+    .section-team {
+        .wrap {
+            padding-top: 45px;    
+        }
+        
+        .element-html {
+            padding-top: 45px;   
+        }
+        
+        article {
+            position: relative;
+            padding-top: 22px;
+            text-align: center;
+            margin-bottom: 40px;
+            
+            .thumbnail {
+                width: 102px;
+                height: 102px;
+                box-shadow: 0 2px 6px 0 rgba(0,0,0,0.5);
+                border-radius: 50%;
+                background-size: cover;
+                background-position: center;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .panel {
+                background-color: #fff;
+                border-top: 4px solid $blue;
+                border-radius: 0 0 8px 8px;
+                box-shadow: 0 11px 12px 0 rgba(0,0,0,0.1);
+                padding: 100px 8px 20px;
+                min-height: 200px;
+            }
+            
+            header {
+                margin-bottom: 0;
+                                
+                h3 {
+                    line-height: 1.46;
+                }
+                
+                .social-icon {
+                    position: absolute;
+                    top: 50px;
+                    right: 35px;   
+                }
+                
+                a {
+                    width: 24px;
+                    height: 24px;
+                    position: relative;
+                    background: #0077B5;
+                    display: inline-block;
+                    
+                    svg {
+                        fill: #fff;
+                        width: 90%;
+                        height: auto;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%,-50%);
+                    }
+                    
+                }
+            }
+            
+            p {
+                font-size: 15px;
+                letter-spacing: 0.5px;
+                line-height: 25px;
+            }
+            
+        }
+    }
+    
+    .section-community {
+        
+        h2 {
+            @include right-heading-lines; 
+        }
+        
+        @include breakpoint(large) {
+            .element-editor {
+                padding-right: rem-calc(map-get($grid-column-gutter, large)); 
+            }
+        }
+        
+        .photo-grid {
+        
+            margin: 0 -7px;
+            
+            @include breakpoint(large) {
+                position: relative;
+            }
+            
+            > div {
+                padding: 0 7px 14px;  
+                float: left;
+                position: relative;   
+                
+                .background {
+                    position: relative;   
+                }
+                
+                &.width-40 {
+                    width: 40%;   
+                }
+                
+                &.width-60 {
+                    width: 60%;
+                }
+                
+                &.width-100 {
+                    width: 100%;
+                }
+                
+            }
+            
+            .background {
+                background-size: cover;
+                background-position: center;
+                height: 300px;
+                box-shadow: 0 0 5px 2px rgba(40,36,37,0.5);
+                
+            }
+        }
+    }
+
+}
