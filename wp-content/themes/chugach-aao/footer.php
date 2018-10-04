@@ -17,53 +17,16 @@
 ?>
 
 <footer class="site-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
-    <?php
-    printf( '<div class="wave-footer show-for-large">%s</div>', get_svg( 'wave-footer-bottom' ) );
-    ?>
     <div class="wrap">
-    
-        
-        
-        <?php
-        
-        function footer_copyright() {
-            
-            $copyright = sprintf( '<p>&copy; %s Raymark Plubming & Sewer.</p>', 
-                                      date( 'Y' ) );
-                                      
-            $designer  = sprintf( '<p>All rights reserved. <a href="%1$s" target="_blank">Seattle Web Design</a> by <a href="%1$s" target="_blank">Sayenko design</a></p>', 'https://www.sayenkodesign.com/' );
-                                                        
-            printf( '<div class="column row footer-copyright">%s%s</div>', $copyright, $designer );
-        }
-        
-        ?>
-            
-        <div class="footer-widgets">
-            
-            <div class="row align-top align-center medium-unstack">
-                    
-                <?php
-                $sidebars = [ 
-                              'footer-1',
-                              'footer-2',
-                              'footer-3' ];
-                foreach( $sidebars as $sidebar ) {
-                    if( is_active_sidebar( $sidebar ) ){
-                        printf( '<div class="%s column column-block ">', '' );
-                        dynamic_sidebar( $sidebar );
-                        echo '</div>';
-                    }
-                }
-                ?>
+        <?php            
+        $copyright = sprintf( '<p>&copy; %s Raymark Plubming & Sewer.</p>', 
+                                  date( 'Y' ) );
+                                  
+        $designer  = sprintf( '<p>All rights reserved. <a href="%1$s" target="_blank">Seattle Web Design</a> by <a href="%1$s" target="_blank">Sayenko design</a></p>', 'https://www.sayenkodesign.com/' );
                                                     
-            </div>
-        
-        </div>   
-            
-        <?php
-        footer_copyright();
+        printf( '<div class="column row footer-copyright">%s%s</div>', $copyright, $designer );
+
         ?>
-                          
      </div>
  
  </footer><!-- #colophon -->
