@@ -35,7 +35,7 @@ if( ! class_exists( 'Services_Hero_Section' ) ) {
             
             if( ! empty( $this->get_settings( 'id' ) ) ) {
                 $this->add_render_attribute(
-                'wrapper', 'id', $this->get_settings( 'id' ), true );            
+                'wrapper', 'id', $this->get_name() . '-' . $this->get_settings( 'id' ), true );            
             }
             
             $background_image       = $this->get_fields( 'background_image' );

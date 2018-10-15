@@ -39,7 +39,7 @@ if( ! class_exists( 'Services_Block_Section' ) ) {
             
             if( ! empty( $this->get_settings( 'id' ) ) ) {
                 $this->add_render_attribute(
-                'wrapper', 'id', $this->get_settings( 'id' ), true );            
+                'wrapper', 'id', $this->get_name() . '-' . $this->get_settings( 'id' ), true );            
             }
             
         } 
