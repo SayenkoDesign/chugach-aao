@@ -37,6 +37,11 @@ if( ! class_exists( 'Services_Specs_Section' ) ) {
                 ]
             );
             
+            if( ! empty( $this->get_settings( 'id' ) ) ) {
+                $this->add_render_attribute(
+                'wrapper', 'id', $this->get_settings( 'id' ), true );            
+            }
+            
             $background_image       = $this->get_fields( 'background_photo' );
             
             if( ! empty( $background_image ) ) {

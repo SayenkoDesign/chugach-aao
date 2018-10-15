@@ -35,7 +35,12 @@ if( ! class_exists( 'Services_Block_Section' ) ) {
                      $this->get_name() . '-block',
                      $this->get_name() . '-block' . '-' . self::$section_count,
                 ]
-            );            
+            ); 
+            
+            if( ! empty( $this->get_settings( 'id' ) ) ) {
+                $this->add_render_attribute(
+                'wrapper', 'id', $this->get_settings( 'id' ), true );            
+            }
             
         } 
         
