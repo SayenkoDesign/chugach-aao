@@ -79,10 +79,10 @@
         display: block;
         border-radius: 50%;
         position: relative;
-        background-color: $blue;
+        background-color: $primary;
         
         &:hover {
-            background-color: $sky-blue;
+            background-color: $secondary;
         }
     }
     
@@ -120,11 +120,11 @@
 			height: 45px;
 			display: block;
 			position: relative;
-            background-color: $blue;
+            background-color: $primary;
             border-radius: 50%;
 
             &:hover {
-                background-color: $sky-blue;  
+                background-color: $secondary;  
                
             }
 		}

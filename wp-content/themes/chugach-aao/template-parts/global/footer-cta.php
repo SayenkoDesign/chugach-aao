@@ -10,19 +10,23 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
             $show_footer_cta = false;
 
             // default to TRUE for the blog
-            if( is_page() && ! is_front_page() ) {
+            if( is_page() ) {
                 $show_footer_cta = get_field( 'page_settings_call_to_action' );
             }
-            else {
-                $show_footer_cta = true;
-            }
-            
+
             if( ! $show_footer_cta ) {
                 return false;
             }
+            
+            $fields['footer_cta_background'] = get_field( 'footer_cta_background', 'option' );
+            $fields['footer_cta_left'] = get_field( 'footer_cta_left', 'option' );
+            $fields['footer_cta_right'] = get_field( 'footer_cta_right', 'option' );
+            $fields['footer_cta_icon'] = get_field( 'footer_cta_icon', 'option' );
+            
+            if( empty( array_filter( $fields ) ) ) {
+                return false;
+            }
                         
-            $fields = get_field( 'footer_cta', 'option' );
-                                                
             $this->set_fields( $fields );
                         
             
@@ -43,41 +47,56 @@ if( ! class_exists( 'Footer_CTA_Section' ) ) {
                 'wrapper', 'class', [
                      $this->get_name() . '-footer-cta'
                 ]
-            );            
+            );  
             
+            $background_image = $this->get_fields( 'footer_cta_background', 'options' );
+            
+            if( ! empty( $background_image ) ) {
+                $background_image = _s_get_acf_image( $background_image, 'hero', true );                
+                $this->add_render_attribute( 'wrap', 'style', sprintf( 'background-image: url(%s);', $background_image ) );            }                 
         }  
+        
+        
+        
+        public function after_render() {
+                            
+            $this->add_render_attribute( 'wrap', 'class', 'wrap' );
+            
+            $icon = $this->get_fields( 'footer_cta_icon', 'options' );
+            if( ! empty( $icon ) ) {
+                $icon = sprintf('<div class="footer-icon">%s</div>', _s_get_acf_image( $icon ) );
+            }
+            
+            return sprintf( '</div>%s</section>', $icon );
+        }
        
         
         // Add content
         public function render() {
-            
+                
             $fields = $this->get_fields();
-                                       
+                                                 
             $row = new Element_Row(); 
-            $row->add_render_attribute( 'wrapper', 'class', 'align-middle text-center' );
+            $row->add_render_attribute( 'wrapper', 'class', 'expanded large-unstack align-middle' );
+                                        
+            // Left 
+            
+            $html = new Element_Html( [ 'fields' => [ 'html' => $this->get_fields( 'footer_cta_left' ) ] ] );
             $column = new Element_Column(); 
-            $column->add_render_attribute( 'wrapper', 'class', 'column-block' );  
-            
-                         
-            // Editor
-            $editor = new Element_Editor( [ 'fields' => $fields ] ); // set fields from Constructor
-            $column->add_child( $editor );
-            
-             // Button
-            $button = new Element_Button( [ 'fields' => $fields ]  ); // set fields from Constructor
-            $button->add_render_attribute( 'anchor', 'class', [ 'button', 'yellow' ] ); 
-            $modal = $fields['modal'];
-            $modal_button_text = $fields['modal_button_text'];
-            if( ! empty( $modal ) && !empty( $modal_button_text ) ) {
-                $button->set_settings( 'url', '#' ); 
-                $button->add_render_attribute( 'anchor', 'data-open', 'schedule-appointment' ); 
-                $button->set_settings( 'title', $modal_button_text ); 
-            }
-            $column->add_child( $button );
+            $column->add_render_attribute( 'wrapper', 'class', 'column-block' );
+            $column->add_child( $html );
             
             $row->add_child( $column );
             
-            $this->add_child( $row );         
+            $html = new Element_Html( [ 'fields' => [ 'html' => $this->get_fields( 'footer_cta_right' ) ] ] );
+            $column = new Element_Column(); 
+            $column->add_render_attribute( 'wrapper', 'class', 'column-block' );
+            $column->add_child( $html );
+                                    
+            $row->add_child( $column );
+            
+            $this->add_child( $row );
+        
         }
         
     }

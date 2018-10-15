@@ -71,9 +71,9 @@ body .gform_wrapper:not(.newsletter) {
 		
 		input {
             
-            &:hover{
-                
-            }
+            @include button;
+            @include button-blue;
+            min-width: rem-calc(200);
             
             @include breakpoint(medium) {
                 display: inline-block;

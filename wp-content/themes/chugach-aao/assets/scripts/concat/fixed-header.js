@@ -8,6 +8,8 @@
             
     $sticky.each(function (i, element) {
         
+        return;
+        
         var $win = $(window), 
             $self = $(this),
             isShow = false,

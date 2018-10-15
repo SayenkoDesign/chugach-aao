@@ -44,10 +44,6 @@
 	include_once( 'functions/social.php' );
 
 	include_once( 'functions/menus.php' );
-        
-    include_once( 'functions/blog.php' );
-    
-    include_once( 'functions/facetwp.php' );
     
 	include_once( 'functions/gravity-forms.php' );
 
@@ -55,15 +51,12 @@
 
     include_once( 'functions/addtoany.php' );
     
-    include_once( 'functions/videos.php' );
     
 /****************************************
 	include_onces (Foundation)
 *****************************************/
 
 include_once( 'foundation/class-foundation.php' );
-include_once( 'foundation/class-foundation-accordion.php' );
-include_once( 'foundation/class-foundation-tabs.php' );
 include_once( 'foundation/class-foundation-grid.php' );
 
 /****************************************
@@ -75,20 +68,17 @@ include_once( 'foundation/class-foundation-grid.php' );
 /****************************************
 	Post Types
 *****************************************/
-    include_once( 'post-types/cpt-faq.php' );
-    include_once( 'post-types/cpt-service.php' );
     include_once( 'post-types/cpt-team.php' );
-    include_once( 'post-types/cpt-testimonial.php' );    
     
 /****************************************
 	Widgets
 *****************************************/
 
-    include_once( 'widgets/widget-social.php' );
+    // include_once( 'widgets/widget-social.php' );
     
 /****************************************
 	Mega Menu
 *****************************************/
 
-    include_once( 'mega-menu/mega-menu.php' );
+    // include_once( 'mega-menu/mega-menu.php' );
         

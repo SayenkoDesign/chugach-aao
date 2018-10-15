@@ -2,6 +2,20 @@
 
 	'use strict';
     
+    function hide_header_menu( menu ) {
+        
+        var mainMenuButtonClass = 'menu-toggle',
+		responsiveMenuClass = 'genesis-responsive-menu';
+        
+        $( menu + ' .' + mainMenuButtonClass + ',' + menu + ' .' + responsiveMenuClass + ' .sub-menu-toggle' )
+			.removeClass( 'activated' )
+			.attr( 'aria-expanded', false )
+			.attr( 'aria-pressed', false );
+
+		$( menu + ' .' + responsiveMenuClass + ',' + menu + ' .' + responsiveMenuClass + ' .sub-menu' )
+			.attr( 'style', '' );
+    }
+    
     var scrollnow = function(e) {
         
         var target;
@@ -23,7 +37,7 @@
                 
             },
             afterScroll: function() {
-                 
+                 hide_header_menu( '.site-header' );
             },
             
         });

@@ -5,7 +5,8 @@ function _s_load_google_fonts() {
 
 	// change array as needed
 	$font_families = array(
-			'Open+Sans'
+			'Open+Sans',
+            'Montserrat'
 		);
 
 	// do not touch below here:

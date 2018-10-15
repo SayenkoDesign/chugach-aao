@@ -36,9 +36,14 @@ class Element_Button extends Element_Base {
                                                 
         $button = $this->get_fields( 'button' );
         
+        // is this field grouped?
+        if( ! empty( $button['link'] ) ) {
+            $button = $button['link'];
+        }
+        
         $defaults = [ 
-               'url' => '',
                'title' => '',
+               'url' => '',
                'target' => ''
         ];   
                                                              
@@ -63,7 +68,10 @@ class Element_Button extends Element_Base {
                                                                           
         $this->add_render_attribute( 'wrapper', 'class', 'element-button' );
                                     
-        return sprintf( '<div %s><p><a %s><span>%s</span></a></p></div>', $this->get_render_attribute_string( 'wrapper' ), $this->get_render_attribute_string( 'anchor' ), $button['title'] );
+        return sprintf( '<div %s><p><a %s><span>%s</span></a></p></div>', 
+                        $this->get_render_attribute_string( 'wrapper' ), 
+                        $this->get_render_attribute_string( 'anchor' ), 
+                        $button['title'] );
 	}
     	
 }

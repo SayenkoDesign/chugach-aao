@@ -16,25 +16,23 @@
 // ---------
 
 $global-font-size: 100%;
-$global-width: rem-calc(1264);
-$global-lineheight: 1.5;
+$global-width: rem-calc(1200);
+$global-lineheight: 1.75;
 
 $black: #000;
 $white: #ffffff;
 
 $green: #AAC687;
 
-$blue: #007ABE;
-$sky-blue: #22A1E7;
-$navy: #035481;
-$yellow: #FFD302;
+$primary: #3E52AA;
+$secondary: #DF3838;
 
 $light-gray: #EFF3F1;
 $gray: #BCBDBF;
 $dark-gray: #252B33;
 
-$cubano: 'cubanoregular', sans-serif;
 $open-sans: 'Open Sans', sans-serif; 
+$montserrat: 'Montserrat', sans-serif;
 
 $transition: none;
 
@@ -83,7 +81,7 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ---------
 
-$header-font-family: $cubano;
+$header-font-family: $montserrat;
 $header-font-weight: 400;
 $header-font-style: normal;
 
@@ -91,17 +89,25 @@ $header-font-style: normal;
 /// @type Map
 $header-styles: (
   small: (
-    'h1': ('font-size': 36, 'line-height': 1.23 ),
-    'h2': ('font-size': 30, 'line-height': 1.23),
+    'h1': ('font-size': 40, 'line-height': 1.19 ),
+    'h2': ('font-size': 30, 'line-height': 1.2),
     'h3': ('font-size': 22, 'line-height': 1.46 ),
     'h4': ('font-size': 18, 'line-height': 1.6 ),
     'h5': ('font-size': 16, 'line-height': 1.6),
-    'h6': ('font-size': 15, 'line-height': 1.6),
+    'h6': ('font-size': 16, 'line-height': 1.6),
+  ),
+  large: (
+    'h1': ('font-size': 47 ),
+    'h2': ('font-size': 30 ),
+    'h3': ('font-size': 22 ),
+    'h4': ('font-size': 18 ),
+    'h5': ('font-size': 16 ),
+    'h6': ('font-size': 16 ),
   ),
 ) !default;
 
-$header-color: #424242;
-$header-lineheight: 1.23;
+$header-color: $primary;
+$header-lineheight: 1.6;
 $header-margin-bottom: 30px;
 $small-font-size: 14px;
 $header-small-font-color: $dark-gray;
@@ -109,13 +115,13 @@ $header-small-font-color: $dark-gray;
 $paragraph-font-family: $open-sans;
 $paragraph-font-style: normal;
 $paragraph-font-weight: normal;
-$paragraph-font-size: 14px;
-$paragraph-line-height: 1.57;
-$paragraph-font-color: #4a4a4a;
+$paragraph-font-size: 16px;
+$paragraph-line-height: 1.75;
+$paragraph-font-color: #454C54;
 $paragraph-margin-bottom: 22px;
 
-$anchor-color: $blue;
-$anchor-color-hover: scale-color($blue, $lightness: -20%);
+$anchor-color: $primary;
+$anchor-color-hover: scale-color($primary, $lightness: -20%);
 
 
 $accordion-item-background-hover: #fff;
@@ -128,3 +134,5 @@ $tab-background-active: #ffffff;
 $tab-item-font-size: 16px;
 $tab-item-padding: 20px;
 $tab-content-padding: 20px;
+
+$box-shadow: 0 11px 12px 0 rgba(0,0,0,0.1); 

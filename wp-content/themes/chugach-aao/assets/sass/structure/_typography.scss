@@ -33,79 +33,23 @@ h4,
 h5,
 h6 {
 	font-family: $header-font-family;	
-    
-    span[style*="underline"] {
-        font-size: rem-calc(21);   
-        line-height: 1.19;
-        padding-bottom: rem-calc(1px);
-        margin-right: rem-calc(3);
-        border-bottom-width: 3px;
-        border-bottom-style: solid;
-        border-bottom-color: $yellow;
-        text-decoration: none!important;
-        position: relative;
-        top: -4px;
-        display: inline-block;
-    }
 }
 
-h1 span {
-    top: -10px!important;
-}
-
-
+h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-    color: $blue;
-}
-
-h1 {
-    margin-bottom: 10px;  
-}
-
-h2 {
-    margin-bottom: 10px; 
-}
-
 h3 {
-    color: $header-color;
-    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;   
 }
 
 h4,
 h5,
 h6 {
-    margin-bottom: 10px;
+    color: $dark-gray;   
 }
 
-p, li {
-    line-height: $paragraph-line-height;
+@mixin heading-lines( $border-color:$primary ) {
     
-}
-
-p, ul {
-    margin-bottom: $paragraph-margin-bottom;	
-}
-
-p:last-child {
-    margin-bottom: 0;   
-}
-
-ul:not([class]),
-ol:not([class]) {
-    margin: rem-calc(0 0 $global-margin 18);
-    
-}
-
-ol:not([class]) {
-    list-style: decimal;
-}
-
-
-@mixin heading-lines( $border-color:$yellow ) {
     display: inline-block;
     position: relative;
     padding: 0 60px;
@@ -153,43 +97,30 @@ ol:not([class]) {
     }
 }
 
-@mixin right-heading-lines( $border-color:$yellow ) {
-    display: inline-block;
-    position: relative;
-    padding-right: 60px;
+
+
+
+p, li {
+    line-height: $paragraph-line-height;
     
-    &::after {
-        content: '';
-        width: 56px;
-        height: 3px;
-        background-color: $border-color;
-        position: absolute;
-        top: 50%;
-        margin-top: -6px;
-           
-    }
+}
+
+p, ul {
+    margin-bottom: $paragraph-margin-bottom;	
+}
+
+p:last-child {
+    //margin-bottom: 0;   
+}
+
+ul:not([class]),
+ol:not([class]) {
+    margin: rem-calc(0 0 $global-margin 18);
     
-    &::after {
-        right: -5px;
-    }
-    
-    span {
-        padding: rem-calc(0 10 0 0);
-        
-        &:after {
-            content: '';
-            width: 40px;
-            height: 3px;
-            background-color: $border-color;
-            position: absolute;
-            top: 50%;
-            margin-top: 4px;
-        }
-        
-        &::after {
-            right: 10px;
-        }   
-    }
+}
+
+ol:not([class]) {
+    list-style: decimal;
 }
 
 .page-builder section {
@@ -226,7 +157,7 @@ ol:not([class]) {
                 position: absolute;
                 top: 0px;
                 left: 0;
-                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(1 1)' fill='none' fill-rule='evenodd'%3E%3Cpath d='M16.985 11.214l-3.33 3.33-.117.116-.388-.389.116-.117 3.33-3.33-3.32-3.32-.12-.12.382-.382.12.12 3.59 3.59.12.119-.383.383z' fill='%23007ABE'/%3E%3Cpath d='M5.754 10.83h10.83' stroke='%23007ABE' stroke-width='1.6' stroke-linecap='square'/%3E%3Ccircle stroke='%23007ABE' stroke-width='2' cx='11' cy='11' r='11'/%3E%3C/g%3E%3C/svg%3E%0A");
+                background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(1 1)' fill='none' fill-rule='evenodd'%3E%3Cpath d='M16.985 11.214l-3.33 3.33-.117.116-.388-.389.116-.117 3.33-3.33-3.32-3.32-.12-.12.382-.382.12.12 3.59 3.59.12.119-.383.383z' fill='%233E52AA'/%3E%3Cpath d='M5.754 10.83h10.83' stroke='%233E52AA' stroke-width='1.6' stroke-linecap='square'/%3E%3Ccircle stroke='%233E52AA' stroke-width='2' cx='11' cy='11' r='11'/%3E%3C/g%3E%3C/svg%3E%0A");
                 
                 /*
                 background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(1 1)' fill='none' fill-rule='evenodd'%3E%3Cpath d='M16.985 11.214l-3.33 3.33-.117.116-.388-.389.116-.117 3.33-3.33-3.32-3.32-.12-.12.382-.382.12.12 3.59 3.59.12.119-.383.383z' fill='%23FFF'/%3E%3Cpath d='M5.754 10.83h10.83' stroke='%23FFF' stroke-width='1.6' stroke-linecap='square'/%3E%3Ccircle stroke='%23FFF' stroke-width='2' cx='11' cy='11' r='11'/%3E%3C/g%3E%3C/svg%3E%0A");

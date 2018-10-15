@@ -1,8 +1,8 @@
 <?php
-// Home - Hero Video
+// Home - Hero
 
-if( ! class_exists( 'Hero_Video_Section' ) ) {
-    class Hero_Video_Section extends Element_Section {
+if( ! class_exists( 'Hero_Section' ) ) {
+    class Hero_Section extends Element_Section {
         
         public function __construct() {
             parent::__construct();
@@ -50,14 +50,6 @@ if( ! class_exists( 'Hero_Video_Section' ) ) {
             }             
             
         }  
-        
-        
-        public function after_render() {
-        
-            $wave = sprintf( '<div class="wave-bottom show-for-large">%s</div>', get_svg( 'wave-bottom' ) );
-                
-            return sprintf( '</div>%s</section>', $wave );
-        }
        
         
         // Add content
@@ -66,23 +58,16 @@ if( ! class_exists( 'Hero_Video_Section' ) ) {
             $fields = $this->get_fields();
             
             // BB Charcoal styles
-            $before_heading   = empty( $fields['before_heading'] ) ? '' : _s_format_string( sprintf( '<span>%s</span>', $fields['before_heading'] ), 'h2' );            
-            $heading          = empty( $fields['heading'] ) ? '' : _s_format_string( $fields['heading'], 'h1' );
-            $button           = empty( $fields['video_button_text'] ) ? '' : _s_format_string( $fields['video_button_text'], 'span' );
+            $subheading   = empty( $fields['subheading'] ) ? '' : _s_format_string( sprintf( '<span>%s</span>', $fields['subheading'] ), 'h2' );            
+            $heading = empty( $fields['heading'] ) ? '' : _s_format_string( $fields['heading'], 'h1' );
+            
+            $description = empty( $fields['description'] ) ? '' : _s_format_string( $fields['description'], 'p' );
                                                 
             if( empty( $heading  ) ) {
                 return;     
             }
-                        
-            $video_url = empty( $fields['video_url'] ) ? '' : $fields['video_url'];
             
-            $video = youtube_embed( $video_url );
-            
-            $play = sprintf( '<button class="play-video align-center align-middle" data-open="modal-video" data-src="%s">
-                              <span class="screen-reader-text">Play Video</span>%s %s</button>', 
-                              $video, get_svg( 'video-play' ), $button );
-            
-            $html = sprintf( '<div class="hero-caption">%s%s%s</div>', $before_heading, $heading, $play );
+            $html = sprintf( '<div class="hero-caption">%s%s%s</div>', $subheading, $heading, $description );
                                                                         
             $row = new Element_Row(); 
             $row->add_render_attribute( 'wrapper', 'class', 'align-middle text-center' );
@@ -100,4 +85,4 @@ if( ! class_exists( 'Hero_Video_Section' ) ) {
     }
 }
    
-new Hero_Video_Section;
+new Hero_Section;

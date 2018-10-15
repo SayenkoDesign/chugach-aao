@@ -1,12 +1,13 @@
 // Primary Navigation
 
-.nav-primary-wrapper {
-    background-color: $blue;
-}
-
 .nav-primary {
 	display: none;
     width: 100%;
+    background-color: $primary;
+    
+    @include breakpoint(medium down) {
+        padding: 0;
+    }
 
     .menu-item {  
         border-top: 1px solid $white;
@@ -35,7 +36,7 @@
     
         a {
             color: $white;
-            font-family: $cubano;
+            font-family: $montserrat;
             font-size: 15px;
             font-weight: 400;
             letter-spacing: 1px;
@@ -48,17 +49,11 @@
     }
     
     .sub-menu {
-        background-color: $sky-blue;  
+        background-color: scale-color($primary, $lightness: 20%);
         
         ul {
             margin: 0!important;   
         }
-    }
-}
-
-@include breakpoint(xlarge down) {
-    .menu-item-column-icon {
-        display: none;   
     }
 }
 
@@ -67,6 +62,7 @@
     .nav-primary {
 		display: block;
 		width: 100%;
+        background-color: transparent;
                 
         .menu .menu-item:focus {
             position: static;
@@ -87,16 +83,16 @@
 	.nav-primary .menu {
 		@include list-reset;
 		background: transparent;
-        text-align: center;
+        text-align: right;
 
 		.menu-item {
 			background: transparent;
 			border: none;
 			width: auto;
-			margin: 0 15px;
+			margin: 0 10px;
             
-            @include breakpoint(xxxlarge) {
-                margin: 0 30px;  
+            @include breakpoint(xxlarge) {
+                margin: 0 20px;
             }
             
  			a {
@@ -119,7 +115,7 @@
             position: relative;
             
 			> a {
-				color: #fff;
+				color: $primary;
 				padding: 0;
  			}
 
@@ -154,7 +150,7 @@
 
 				> a {
 					background: transparent;
-                    color: $white;
+                    color: $dark-gray;
  				}
                 
 			}
@@ -165,7 +161,7 @@
                 
 				> a {
 					background: transparent;
-                    color: $yellow; 
+                    color: $dark-gray; 
                     
                     
                     &:before {
@@ -176,7 +172,7 @@
 			}
             
             a:focus {
-                color: $yellow; 
+                color: $secondary; 
             }
 			
  		}
@@ -187,38 +183,37 @@
             position: absolute;
             top: 100%;
             left: auto;
-            margin-left: -27px;
+            margin-left: -15px;
             min-width: 250px;
-            
-            transform: translateY(-150%);
-            padding: 40px 12px 10px;
-            z-index: -2;
+            left: -999em;
+            padding: 20px 10px 10px;
             opacity: 0;
-            background-color: $sky-blue;
+            background-color: $white;
             transition-delay: .25s; 
             transition: opacity .75s ease 0s, transform .75s ease 0s;
-            border-bottom: 4px solid #FFD302;
+            border-bottom: 4px solid $primary;
             box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
             
             .menu-item {
 				border: none;
 				display: block;
-				margin: 0 15px 20px;
+				margin: 0 15px 15px;
                 padding: 0;
 
 				> a {
                     background: transparent;
 					position: relative;
                     padding: 0;
+                    font-size: rem-calc(16);
                     
-                    color: #FFFFFF;
+                    color: $primary;
 
 					&:hover {
-						color: $yellow; 
+						color: $dark-gray; 
 					}
                     
                     &:focus {
-                        color: $yellow;  
+                        color: $secondary;  
                     }
 				}
 			}
@@ -232,23 +227,31 @@
         .menu-item.focus > ul.sub-menu,
         .menu-item:hover > ul.sub-menu {
             opacity: 1;
-            transform: translateY(0);
+            left: 0;
         }
 
 	}
    
 }
 
+.nav-primary .menu .red a {
+    
+	@include breakpoint(large) {
+        @include button;  
+		@include button-red;
+        min-width: rem-calc(120);
+	}
+}
 
-.menu .mobile-link {
+.nav-primary .menu .mobile-link {
     
 	@include breakpoint(large) {
 		display: none!important;
 	}
 }
 
-.menu .mobile-link-cta {
-    background-color: $blue;
+.nav-primary .menu .mobile-link-cta {
+    background-color: $primary;
 }
 
 
@@ -256,8 +259,4 @@
 	@include breakpoint(medium down) {
 		display: none!important;
 	}
-}
-
-.nav-primary .menu .menu-item-hide > a {
-	visibility: hidden!important;
 }

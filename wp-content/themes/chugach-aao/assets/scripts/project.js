@@ -6981,6 +6981,8 @@ return Outlayer;
             
     $sticky.each(function (i, element) {
         
+        return;
+        
         var $win = $(window), 
             $self = $(this),
             isShow = false,
@@ -7194,65 +7196,70 @@ return Outlayer;
 (function (document, window, $) {
 
 	'use strict';
+    
+    $('.timeline-slider').on('init', function(event, slick){
+              
+       var $items = slick.$dots.find('li');
+       //$items.css('left', );
+       var $slides = slick.$slides;
+       $.each( $slides, function( index, element ){
+           var position = $(element).find('.event').data('position');
+           var year = $(element).find('.event').data('year');
+           $items.eq(index).css('left', position);
+           $items.eq(index).addClass('year-' + year); 
+       });
+    });
+    
+    $('.timeline-slider').on('breakpoint', function(event, slick){
+              
+       var $items = slick.$dots.find('li');
+       //$items.css('left', );
+       var $slides = slick.$slides;
+       $.each( $slides, function( index, element ){
+           var position = $(element).find('.event').data('position');
+           var year = $(element).find('.event').data('year');
+           $items.eq(index).css('left', position);
+           $items.eq(index).addClass('year-' + year); 
+       });
+    });
 
-	$('.section-testimonials .slick').slick({
-      dots: true,
-      arrows: true,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    });
-    
-    
-   /* $('.section-home-news .slick').slick({
-      dots: true,
-      arrows: false,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    });
-    
-    
-    $('.slick-posts').slick({
-        dots: false,
-        centerMode: false,
-        //centerPadding: 0,
+	$('.timeline-slider').slick({
+        dots: true,
+        dotsClass: 'dot-cnt',
+        appendDots: $('.timeline-cnt'),
+        infinite: true,
         slidesToShow: 4,
-        arrows: true,
-        //nextArrow: '<div class="arrow-right"><span class="screen-reader-text">Next</span></div>',
-        //prevArrow: '<div class="arrow-left"><span class="screen-reader-text">Previous</span></div>',
+        slidesToScroll: 1,
+        customPaging: function(slick,index) {
+            return '<div class="blue-dot slidelink' + index + '"></div>';
+        },
         responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                centerMode: false,
-                slidesToShow: 3,
-              }
-            },
-            {
-              breakpoint: 980,
-              settings: {
-                centerMode: false,
-                slidesToShow: 2,
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                centerMode: false,
-                slidesToShow: 1,
-              }
+        {
+            breakpoint: 1200,
+            settings: {
+                slidesToShow: 3
             }
+        },
+        {
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 2
+            }
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 1
+            }
+        }
         ]
+    
     });
+
     
-    
-    $('.slick-posts').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-        new Foundation.Equalizer($('#slick-posts'));
-    });*/
-   
+    $(window).on('resize', function() {
+      //$('.timeline-slider').slick('reinit');
+    });
     
 }(document, window, jQuery));
 
@@ -7261,6 +7268,20 @@ return Outlayer;
 (function (document, window, $) {
 
 	'use strict';
+    
+    function hide_header_menu( menu ) {
+        
+        var mainMenuButtonClass = 'menu-toggle',
+		responsiveMenuClass = 'genesis-responsive-menu';
+        
+        $( menu + ' .' + mainMenuButtonClass + ',' + menu + ' .' + responsiveMenuClass + ' .sub-menu-toggle' )
+			.removeClass( 'activated' )
+			.attr( 'aria-expanded', false )
+			.attr( 'aria-pressed', false );
+
+		$( menu + ' .' + responsiveMenuClass + ',' + menu + ' .' + responsiveMenuClass + ' .sub-menu' )
+			.attr( 'style', '' );
+    }
     
     var scrollnow = function(e) {
         
@@ -7283,7 +7304,7 @@ return Outlayer;
                 
             },
             afterScroll: function() {
-                 
+                 hide_header_menu( '.site-header' );
             },
             
         });

@@ -44,39 +44,29 @@ if( ! class_exists( 'About_Mission_Section' ) ) {
             
             $fields = $this->get_fields(); 
             
-            if( empty( $this->get_fields( 'subheading' ) ) ) 
-                return;
+            $fields = $this->get_fields();
+                                                 
+            $row = new Element_Row(); 
+            $row->add_render_attribute( 'wrapper', 'class', 'large-unstack' );
+                                        
+            // Left 
+            $html = new Element_Html( [ 'fields' => [ 'html' => $this->get_fields( 'column_left' ) ] ] );
+            $html->add_render_attribute( 'wrapper', 'class', 'mission-statement' );
+            $column = new Element_Column(); 
+            $column->add_render_attribute( 'wrapper', 'class', 'column-block' );
+            $column->add_child( $html );
+            $row->add_child( $column );
+            
+            // Right
+            $html = new Element_Html( [ 'fields' => [ 'html' => $this->get_fields( 'column_right' ) ] ] );
+            $column = new Element_Column(); 
+            $column->add_render_attribute( 'wrapper', 'class', 'column-block' );
+            $column->add_child( $html );
+            $row->add_child( $column );
+            
+            $this->add_child( $row );
                 
-            $logo_mark = sprintf( '<div class="logo-mark"><img src="%sicons/service-area-icon.svg" class="" /></div>', trailingslashit( THEME_IMG ) );
-                
-            $subheading = _s_format_string( sprintf( '<span>%s</span>', _s_wrap_string( $this->get_fields( 'subheading' ) ) ), 'h3' );
-            
-            $description = _s_format_string( $this->get_fields( 'description' ), 'p' );
-            
-            $quote_mark = sprintf( '<div class="quote-mark"><img src="%sabout/quote-gray.svg" /></div>', trailingslashit( THEME_IMG ) );
-            
-            $caption = sprintf( '<div class="column"><div class="caption">%s<div class="wrap">%s%s%s</div></div></div>', $logo_mark, $subheading, $description, $quote_mark );
-            
-            $photos = $this->get_fields( 'photos' );
-            
-            // 85% and 129%
-            
-            if( empty( $photos ) ) {
-                return;
-            }
-            
-            $photo_classes = [ 'width-60', 'width-40', 'width-40', 'width-60' ];
-            $items = '';
-            
-            foreach( $photos as $key => $photo ) {
-                $background = _s_get_acf_image( $photo['ID'], 'large', true );
-                $style = sprintf( ' style="background-image: url(%s);"', $background );
-                $items .= sprintf( '<div class="%s"><div class="background"%s></div></div>', $photo_classes[$key], $style );
-            }
-            
-            $grid = sprintf( '<div class="column"><div class="photo-grid clearfix">%s</div></div>', $items );
-                       
-            return sprintf( '<div class="row align-middle large-unstack">%s%s</div>', $grid, $caption );
+           
         }
     }
 }

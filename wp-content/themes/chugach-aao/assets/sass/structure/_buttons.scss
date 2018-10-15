@@ -6,14 +6,13 @@
     transition: none;
     text-transform: uppercase;
     text-decoration: none!important;
-    box-shadow: 0 11px 12px 0 rgba(0,0,0,0.12); 
-	color: #FFFFFF;
-	font-family: $cubano;
+	font-family: $header-font-family;
 	font-size: 13px;
 	letter-spacing: 1.1px;
 	line-height: 20px;
 	text-align: center;
-    min-width: 194px;
+    min-width: 150px;
+    max-width: 280px;
     
     &:hover {
         background-color: transparent;   
@@ -52,6 +51,7 @@
 @mixin button-border( $border-color: transparent, $border-color-hover: transparent, $size: 2px ) {
     border-color: $border-color;
     border-width: $size;
+    border-style: solid;
     &:hover{
         border-color: $border-color-hover;
     }  
@@ -79,54 +79,47 @@
     }  
 }
 
-@mixin button-padding( $top: 16px, $right: 19px, $bottom: 16px, $left: 19px ) {
+@mixin button-padding( $top: 10px, $right: 19px, $bottom: 10px, $left: 19px ) {
     padding: $top $right $bottom $left;
 }
 
+@mixin button-red {
+    @include button-background( $secondary, $white );
+    @include button-color($white, $secondary, $white, $white, $white );
+    @include button-padding();
+    @include button-border($secondary, $secondary, 2px);
+    border-radius: 23px;
+}
 
 @mixin button-blue {
-    @include button-background( $blue, $sky-blue );
-    @include button-color();
+    @include button-background( transparent, $primary );
+    @include button-color($primary, $white, $primary, $primary, $primary );
     @include button-padding();
-    @include button-border($yellow, $yellow, 3px);
+    @include button-border($primary, $primary, 2px);
     border-radius: 23px;
 }
 
 @mixin button-white {
     @include button-background( transparent, white );
-    @include button-color(white, $sky-blue, white, $sky-blue, $blue);
-    @include button-border(white, $sky-blue, 3px);
-    @include button-padding();
-    border-radius: 23px;
-}
-
-@mixin button-yellow {
-    @include button-background( $yellow, $white );
-    @include button-color($navy, $navy, $navy, $navy, $navy);
+    @include button-color(white, $primary, white, $primary, $primary);
+    @include button-border(white, $white, 2px);
     @include button-padding();
     border-radius: 23px;
 }
 
 
-.button {
+a.button,
+input[type="submit"].button,
+button.button {
     @include button;  
-    @include button-blue;  
         
     &.blue {
         @include button-blue; 
-    }
+    } 
     
-   &.white {
-       @include button-white; 
-   } 
-   
-   &.yellow {
-       @include button-yellow; 
-       
-       @include breakpoint(medium) {
-           min-width: 250px;
-       }
-   } 
+    &.white {
+        @include button-white; 
+    } 
 }
 
 

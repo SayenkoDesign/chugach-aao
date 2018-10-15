@@ -2,7 +2,7 @@
 
 .site-header.fixed  .wpml-ls {
     .wpml-ls-current-language a {
-        color: $blue!important;   
+        color: $primary!important;   
     }
 }
 
@@ -20,7 +20,7 @@
     }
     
     .wpml-ls-current-language a {
-        color: $blue!important;   
+        color: $primary!important;   
         
         @media #{$xlarge-up} {
             color: #fff!important;
