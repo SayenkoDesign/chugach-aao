@@ -6975,74 +6975,47 @@ return Outlayer;
 
 	'use strict';
     
-    // Scroll up show header
-
-	var $sticky =  $('.site-header');
-            
-    $sticky.each(function (i, element) {
-        
-        return;
-        
-        var $win = $(window), 
-            $self = $(this),
-            isShow = false,
-            delta = 1000, // distance from top where its active
-            lastScrollTop = 0;
-            
-        var scrollHeight = $(document).height();
-
-        $win.on("scroll", function() {
-            var scrollPosition = $(window).height() + $(window).scrollTop();
-            var scrollBottom = ( (scrollHeight - scrollPosition) / scrollHeight ) * 100;
-            var scrollTop = $win.scrollTop();
-            var offset = scrollTop - lastScrollTop;
-            lastScrollTop = scrollTop;
-            
-            /*
-            console.log( 'ScrollTop: ' + scrollTop );
-            
-            console.log( 'ScrollHeight: ' + scrollHeight );
-            
-            console.log( 'ScrollPosition: ' + scrollPosition );
-            
-            console.log( 'scrollBottom:' + scrollBottom );
-            */
-            
-            if( scrollHeight < (delta * 1.5) ) {
-                return;
-            }
-            
-            if ( scrollTop > delta && scrollBottom > 0 ) {
-                
-                $self.addClass('fixed');
-                
-                if (offset < 0 ) {
-                    if (!isShow ) {
-                      $self.addClass('fixed-show');
-                      isShow = true;
-                    }
-                } else if (offset > 0 || offset <= lastScrollTop ) {
-                    if (isShow) {
-                      $self.removeClass('fixed fixed-show');
-                      isShow = false;
-                    }
-                }
-                else {
-                    $self.removeClass('fixed fixed-show');
-                    isShow = false;
-                }
-                
-            }
-            else {
-                
-                $self.removeClass('fixed fixed-show'); 
-                isShow = false; 
-                 
-            }
-            
-        });
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 300;
+    var navbarHeight = $('.site-header').outerHeight();
+    
+    $(window).scroll(function(event){
+        didScroll = true;
     });
     
+    setInterval(function() {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 250);
+    
+    function hasScrolled() {
+        var st = $(window).scrollTop();
+        
+        // Make scroll more than delta
+        if(Math.abs(lastScrollTop - st) <= delta) {
+            return;
+        }
+        
+        // If scrolled down and past the navbar, add class .nav-up.
+        if (st > lastScrollTop && st > navbarHeight){
+            // Scroll Down
+            $('.site-header').removeClass('nav-down').addClass('nav-up shrink');
+        } else {
+            // Scroll Up
+            if((delta/2) + st + $(window).height() < $(document).height()) {
+                $('.site-header').removeClass('nav-up').addClass('nav-down');
+            }
+        }
+        
+        if(st <= delta) {
+            $('.site-header').removeClass('nav-down shrink')
+        }
+      
+        lastScrollTop = st;
+    }
 
 }(document, window, jQuery));
 (function (document, window, $) {
@@ -7053,6 +7026,24 @@ return Outlayer;
 	$(document).foundation();
         
     $(".nav-primary").accessibleDropDownMenu();
+    
+    
+    $(window).on('load changed.zf.mediaquery', function(event, newSize, oldSize) {
+        
+        if( Foundation.MediaQuery.atLeast('large') ) {
+          $('.sticky-header').css( 'height', $('.site-header').height() );
+          $('.site-header').addClass('fixed');
+        }
+        else {
+            $('.sticky-header').css( 'height', '' );
+        }
+        
+        // need to reset sticky on resize. Otherwise it breaks
+        if( ! Foundation.MediaQuery.atLeast('large') ) {
+            $(document).foundation();
+        }
+                
+    });
     
     
     // Toggle menu
@@ -7067,64 +7058,6 @@ return Outlayer;
         
         e.preventDefault();
 
-    });
-    
-   
-   $(document).on('click', '.play-video', playVideo);
-    
-    function playVideo() {
-                
-        var $this = $(this);
-        
-        var url = $this.data('src');
-                
-        var $modal = $('#' + $this.data('open'));
-        
-        /*
-        $.ajax(url)
-          .done(function(resp){
-            $modal.find('.flex-video').html(resp).foundation('open');
-        });
-        */
-        
-        var $iframe = $('<iframe>', {
-            src: url,
-            id:  'video',
-            frameborder: 0,
-            scrolling: 'no'
-            });
-        
-        $iframe.appendTo('.video-placeholder', $modal );        
-        
-        
-        
-    }
-    
-    // Make sure videos don't play in background
-    $(document).on(
-      'closed.zf.reveal', '#modal-video', function () {
-        $(this).find('.video-placeholder').html('');
-      }
-    );
-    
-    
-    // Prevent reveal anchors from default behoaviour
-    $('a[data-open]').on('click', function(e){
-        e.preventDefault();
-    });
-    
-    
-    var hoverTimeout;
-    var $img = $('.menu-item-column-icon img'),
-    dsrc = $img.attr('src');
-    $('.nav-primary .menu-item-object-service a').hover(function() {
-        $img.attr('src', $(this).data('icon'));
-        clearTimeout(hoverTimeout);
-    }, function() {
-        hoverTimeout = setTimeout(function() {
-            $img.attr('src', dsrc);
-        }, 3000);
-        
     });
     
     
@@ -7301,10 +7234,11 @@ return Outlayer;
         $.smoothScroll({
             scrollTarget: target,
             beforeScroll: function() {
-                
+                $('.site-header').hide();
             },
             afterScroll: function() {
-                 hide_header_menu( '.site-header' );
+                 $('.site-header').show();
+                 hide_header_menu('.nav-primary');
             },
             
         });

@@ -4,16 +4,25 @@
 
 .home {
     
+    .sticky-header {
+        height: auto!important;        
+    }
+    
     .site-header {
         @include breakpoint(large) {
-            background-color: transparent;
-            position: absolute;
-            top: 0;
-            left: 0;
+            background-color: transparent!important;
+            position: absolute!important;  
             
-            &:after {
-                display: none;   
-            }   
+            &.nav-up {
+                transform: none!important;   
+            }
+            &.nav-down {
+                transition: none!important;   
+                
+                &:after {
+                    display: none;   
+                }
+            }
         }
     }
     

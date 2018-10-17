@@ -33,54 +33,56 @@
         <li><a href="#content" class="screen-reader-shortcut"><?php esc_html_e( 'Skip to content', '_s' ); ?></a></li>
         <li><a href="#footer" class="screen-reader-shortcut"><?php esc_html_e( 'Skip to footer', '_s' ); ?></a></li>
     </ul>
-        
-    <header id="masthead" class="site-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
-		<div class="wrap">
+    
+    <div class="sticky-header">   
+        <header id="masthead" class="site-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
+            <div class="wrap">
+                        
+                <div class="row align-middle large-unstack">
                     
-			<div class="row align-middle large-unstack">
-                
-                      
-                <div class="columns site-branding shrink">
-                    <div class="site-title">
-                    <?php
-                    $site_url = home_url();
-                    $logo = sprintf('<img src="%sheader/logo.png" alt="site logo" />', trailingslashit( THEME_IMG ) );                    
-                    printf('<a href="%s" title="%s">%s</a>',
-                            $site_url, get_bloginfo( 'name' ), $logo );
-                    ?>
-                    </div>
-                </div><!-- .site-branding -->
-                
-                <nav id="site-navigation" class="nav-primary column" role="navigation" aria-label="Main" itemscope itemtype="https://schema.org/SiteNavigationElement">            
+                          
+                    <div class="columns site-branding shrink">
+                        <div class="site-title">
+                        <?php
+                        $site_url = home_url();
+                        $logo = sprintf('<img src="%sheader/logo.png" alt="site logo" />', trailingslashit( THEME_IMG ) );                    
+                        printf('<a href="%s" title="%s">%s</a>',
+                                $site_url, get_bloginfo( 'name' ), $logo );
+                        ?>
+                        </div>
+                    </div><!-- .site-branding -->
                     
-                    <?php
-                        // Desktop Menu
-                        $args = array(
-                            'theme_location' => 'primary',
-                            'menu' => 'Primary Menu',
-                            'container' => '',
-                            'container_class' => '',
-                            'container_id' => '',
-                            'menu_id'        => 'primary-menu',
-                            'menu_class'     => 'menu',
-                            'before' => '',
-                            'after' => '',
-                            'link_before' => '',
-                            'link_after' => '',
-                            'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>'
-                         );
-                        wp_nav_menu($args);
-                    ?>
+                    <nav id="site-navigation" class="nav-primary column" role="navigation" aria-label="Main" itemscope itemtype="https://schema.org/SiteNavigationElement">            
+                        
+                        <?php
+                            // Desktop Menu
+                            $args = array(
+                                'theme_location' => 'primary',
+                                'menu' => 'Primary Menu',
+                                'container' => '',
+                                'container_class' => '',
+                                'container_id' => '',
+                                'menu_id'        => 'primary-menu',
+                                'menu_class'     => 'menu',
+                                'before' => '',
+                                'after' => '',
+                                'link_before' => '',
+                                'link_after' => '',
+                                'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>'
+                             );
+                            wp_nav_menu($args);
+                        ?>
+                        
+                    </nav>
                     
-                </nav>
+                </div>
+    
                 
-			</div>
-
-            
-            
-		</div><!-- wrap -->
-         
-	</header><!-- #masthead -->
+                
+            </div><!-- wrap -->
+             
+        </header><!-- #masthead -->
+    </div>
 
 <div id="page" class="site-container">
 

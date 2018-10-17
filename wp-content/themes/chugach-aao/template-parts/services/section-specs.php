@@ -66,6 +66,11 @@ if( ! class_exists( 'Services_Specs_Section' ) ) {
             $column = new Element_Column(); 
             $column->add_render_attribute( 'wrapper', 'class', 'column-block' );
             $column->add_child( $editor );            
+            
+            $button = new Element_Button( [ 'fields' => $fields ]  ); // set fields from Constructor
+            $button->add_render_attribute( 'anchor', 'class', [ 'button', 'blue' ] ); 
+            $column->add_child( $button );
+            
             $row->add_child( $column );
             
             // Details

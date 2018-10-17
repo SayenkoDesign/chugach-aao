@@ -40,24 +40,6 @@ if( function_exists('acf_add_options_sub_page') ) {
  		'redirect' 	=> false,
         'autoload' => true,
 	));
-    
-    acf_add_options_sub_page(array(
-		'page_title' 	=> 'Social Profiles',
-		'menu_title' 	=> 'Social Profiles',
-        'menu_slug' 	=> 'theme-settings-social',
-        'parent' 		=> 'theme-settings',
-		'capability' => 'edit_posts',
- 		'redirect' 	=> false,
-        'autoload' => true,
-	));
-    
-    
-    acf_add_options_sub_page(array(
-		'page_title' 	=> 'Locations Settings',
-		'menu_title' 	=> 'Locations Settings',
-		'parent'     => 'edit.php?post_type=location',
-		'capability' => 'edit_posts'
-	));
 
 }
 

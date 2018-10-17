@@ -34,10 +34,11 @@
         $.smoothScroll({
             scrollTarget: target,
             beforeScroll: function() {
-                
+                $('.site-header').hide();
             },
             afterScroll: function() {
-                 hide_header_menu( '.site-header' );
+                 $('.site-header').show();
+                 hide_header_menu('.nav-primary');
             },
             
         });
