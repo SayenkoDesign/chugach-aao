@@ -39,6 +39,7 @@
         text-align: center;
             
         .row {
+            min-height: 300px;
             padding: 45px 0;   
             
             @include breakpoint(large) {
@@ -165,7 +166,8 @@
 .section-why {
  
     .wrap {
-        padding: rem-calc(45 0);   
+        padding: rem-calc(45 0);  
+        background-size: cover;   
     }
     
     header {
