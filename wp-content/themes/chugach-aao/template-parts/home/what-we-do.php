@@ -71,7 +71,7 @@ if( ! class_exists( 'Home_What_We_Do_Section' ) ) {
                                 
                 foreach( $rows as $row ) {     
                                     
-                    $thumbnail = sprintf( '<div class="thumbnail">%s</div>', _s_get_acf_image( $row['grid_image'], 'medium' ) );
+                    $thumbnail = sprintf( '<div class="thumbnail">%s</div>', _s_get_acf_image( $row['grid_image'], 'thumbnail' ) );
                     $title = _s_format_string( $row['grid_title'], 'p' );                      
                     $button = $row['grid_button'];
                     $href = '';
