@@ -39,11 +39,19 @@
         text-align: center;
             
         .row {
-            min-height: 300px;
-            padding: 45px 0;   
-            
-            @include breakpoint(large) {
-                min-height: 500px;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        .hero-caption {
+            min-height: 375px;
+            padding: 45px 0;
+        }
+        
+        @include breakpoint(large) {
+            .hero-caption {
+                min-height: 560px; 
+                padding: 160px 0 45px;
             }
         }
         
